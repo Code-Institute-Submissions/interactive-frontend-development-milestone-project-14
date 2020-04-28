@@ -10,6 +10,7 @@ $(document).ready(function () {
     currentSection: 1,
 
     drawing: "",
+    progress: false,
   };
 
   var checkList = [
@@ -61,6 +62,10 @@ $(document).ready(function () {
 
   emailjs.init("user_ephfpBXT56FDLLPvtfTYK");
 
+  $("#result-done-btn").on("click", function () {
+    window.location.reload();
+  });
+
   function completeTest() {
     nextSection();
     $("#result-score").html(data.currentPoint);
@@ -84,6 +89,7 @@ $(document).ready(function () {
       point: data.currentPoint,
       result: resultText,
     });
+    data.progress = false;
   }
 
   function loadQuestion(index) {
@@ -152,10 +158,8 @@ $(document).ready(function () {
   });
 
   $("#start-now-btn").on("click", function () {
+    data.progress = true;
     nextSection();
-    window.onbeforeunload = $(window).on("beforeunload", function () {
-      return false;
-    });
   });
 
   // Initialize
@@ -164,4 +168,12 @@ $(document).ready(function () {
   $("#section-3").hide();
   $("#section-4").hide();
   $("#section-5").hide();
+  window.addEventListener("beforeunload", function (e) {
+    if (data.progress) {
+      e.preventDefault();
+      e.returnValue = "";
+    } else {
+      delete e["returnValue"];
+    }
+  });
 });
