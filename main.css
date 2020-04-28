@@ -8,4 +8,17 @@ canvas {
   height: 47vh;
   width: 100%;
   padding: 1px;
+  touch-action: none;
+}
+
+.bg-primary {
+  background-color: #3fa132 !important;
+}
+
+.btn-primary,
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:visited {
+  background-color: #3fa132 !important;
+  border-color: #3fa132 !important;
 }
