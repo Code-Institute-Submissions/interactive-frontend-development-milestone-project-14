@@ -60,12 +60,58 @@ $(document).ready(function () {
     },
   ];
 
-  emailjs.init("user_ephfpBXT56FDLLPvtfTYK");
+  function nextSection() {
+    $(`#section-${data.currentSection}`).hide();
+    data.currentSection += 1;
+    $(`#section-${data.currentSection}`).show();
+  }
 
-  $("#result-done-btn").on("click", function () {
-    window.location.reload();
+  // Section 1
+  $("#start-now-btn").on("click", function () {
+    data.progress = true;
+    nextSection();
   });
 
+  // Section 2
+  $("#info-done-btn").on("click", function () {
+    var form = $("#info-form")[0];
+    form.classList.add("was-validated");
+    var valid = form.checkValidity();
+    if (valid) {
+      nextSection();
+    }
+    $("form")
+      .serializeArray()
+      .forEach(function (field) {
+        data[field.name] = field.value;
+      });
+  });
+
+  // Section 3
+  var container = $("#artboard-container")[0];
+  var cfd = new CanvasFreeDrawing.default({
+    elementId: "artboard",
+    width: container.offsetWidth,
+    height: container.offsetHeight,
+  });
+
+  cfd.setLineWidth(5);
+  cfd.setStrokeColor([0, 0, 0]);
+
+  $("#artboard-undo-btn").on("click", function () {
+    cfd.undo();
+  });
+  $("#artboard-reset-btn").on("click", function () {
+    cfd.clear();
+  });
+  $("#artboard-done-btn").on("click", function () {
+    $("#assess-image")[0].src = data.drawing = $("#artboard")[0].toDataURL(
+      "image/png"
+    );
+    nextSection();
+  });
+
+  // Section 4
   function completeTest() {
     nextSection();
     $("#result-score").html(data.currentPoint);
@@ -104,13 +150,6 @@ $(document).ready(function () {
       $("#assess-question").html(question);
     }
   }
-
-  function nextSection() {
-    $(`#section-${data.currentSection}`).hide();
-    data.currentSection += 1;
-    $(`#section-${data.currentSection}`).show();
-  }
-
   $("#assess-yes-btn").on("click", function () {
     data.currentPoint += checkList[data.currentQuestion].point;
     loadQuestion(data.currentQuestion + 1);
@@ -120,49 +159,13 @@ $(document).ready(function () {
     loadQuestion(data.currentQuestion + 1);
   });
 
-  var container = $("#artboard-container")[0];
-  var cfd = new CanvasFreeDrawing.default({
-    elementId: "artboard",
-    width: container.offsetWidth,
-    height: container.offsetHeight,
-  });
-
-  cfd.setLineWidth(5);
-  cfd.setStrokeColor([0, 0, 0]);
-
-  $("#artboard-undo-btn").on("click", function () {
-    cfd.undo();
-  });
-  $("#artboard-reset-btn").on("click", function () {
-    cfd.clear();
-  });
-  $("#artboard-done-btn").on("click", function () {
-    $("#assess-image")[0].src = data.drawing = $("#artboard")[0].toDataURL(
-      "image/png"
-    );
-    nextSection();
-  });
-
-  $("#info-done-btn").on("click", function () {
-    var form = $("#info-form")[0];
-    form.classList.add("was-validated");
-    var valid = form.checkValidity();
-    if (valid) {
-      nextSection();
-    }
-    $("form")
-      .serializeArray()
-      .forEach(function (field) {
-        data[field.name] = field.value;
-      });
-  });
-
-  $("#start-now-btn").on("click", function () {
-    data.progress = true;
-    nextSection();
+  // Section 5
+  $("#result-done-btn").on("click", function () {
+    window.location.reload();
   });
 
   // Initialize
+  emailjs.init("user_ephfpBXT56FDLLPvtfTYK");
   loadQuestion(0);
   $("#section-2").hide();
   $("#section-3").hide();
