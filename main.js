@@ -151,8 +151,11 @@ $(document).ready(function () {
       });
   });
 
-  $("#start-now-btn").on("click", function (event) {
+  $("#start-now-btn").on("click", function () {
     nextSection();
+    window.onbeforeunload = $(window).on("beforeunload", function () {
+      return false;
+    });
   });
 
   // Initialize
