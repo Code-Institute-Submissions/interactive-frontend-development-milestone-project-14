@@ -22,3 +22,48 @@ canvas {
   background-color: #3fa132 !important;
   border-color: #3fa132 !important;
 }
+
+.jumbotron {
+  background-color: #f4fff2 !important;
+}
+
+#start-keyword {
+  font-family: "Caveat", cursive;
+  text-transform: uppercase;
+}
+
+#start-keyword:after {
+  content: "";
+  animation: squeeze 4s linear infinite alternate;
+}
+
+@keyframes squeeze {
+  0%,
+  10% {
+    letter-spacing: 0;
+    opacity: 1;
+    content: "simple";
+  }
+  20%,
+  30% {
+    letter-spacing: -0.5em;
+    opacity: 0;
+  }
+  45%,
+  65% {
+    letter-spacing: 0;
+    opacity: 1;
+    content: "quick";
+  }
+  80%,
+  90% {
+    letter-spacing: -0.5em;
+    opacity: 0;
+  }
+  90%,
+  100% {
+    letter-spacing: 0;
+    opacity: 1;
+    content: "free";
+  }
+}

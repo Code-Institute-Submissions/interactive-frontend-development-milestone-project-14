@@ -29,7 +29,6 @@ The basic info and the test result will generate an email to our care center and
 ### Features Left to Implement
 
 - improve drawing performance on old mobile phone
-- fix drawing refresh issue
 - On result page, user able to view a list of care center query from API
 
 ## Technologies Used
@@ -74,6 +73,7 @@ They are requested to perform the follow action to validate:
 3. assessment
    - clicking the yes/no button should lead to next question
    - on last question, should display the result
+   - after last question, should receive an email presented in the info page
 
 ## Deployment
 

@@ -124,6 +124,7 @@ $(document).ready(function () {
     } else {
       resultText = "The screenee has no dementia condition ";
     }
+    $("#result-email").html(data.email);
     $("#result-text").html(resultText);
     $("#result-image")[0].src = data.drawing;
     emailjs.send("gmail", "test_result", {
