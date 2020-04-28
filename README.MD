@@ -28,6 +28,8 @@ The basic info and the test result will generate an email to our care center and
 
 ### Features Left to Implement
 
+- improve drawing performance on old mobile phone
+- fix drawing refresh issue
 - On result page, user able to view a list of care center query from API
 
 ## Technologies Used
@@ -51,6 +53,8 @@ This project applied the below as the languages and tools in the web development
   is used to simplify DOM manipulation.
 - [canvas-free-draw](https://github.com/federico-moretti/canvas-free-drawing)
   is used to create the artboard
+- [favicon-generator](https://favicon.io/favicon-generator/)
+  is used to generate favicon
 
 ## Testing
 
@@ -73,8 +77,8 @@ They are requested to perform the follow action to validate:
 
 ## Deployment
 
-The deployment is on master branch
-Other development is perform on dev branch
+The deployment is perform through github pages, master branch
+The development and local testing is performed at dev branch
 
 ## Credits
 
