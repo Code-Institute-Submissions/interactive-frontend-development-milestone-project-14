@@ -12,128 +12,131 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-primary">
-    <a class="navbar-brand" href="#">Clock Drawing Test</a>
-  </nav>
-  <div id="section-1" class="container pt-2">
-    <div class="jumbotron">
-      <h3>Welcome to Online Clock Drawing Test</h3>
-      <p class="pt-3 lead">
-        The clock drawing test is a </br>
-        <span id="start-keyword">
-        </span> tool </br> to screen for signs of neurological problems.
-      </p>
-      <p>
-        It can provide helpful insight into a person's cognitive ability
-      </p>
-      <hr class="my-4">
-      <blockquote class="text-center py-md-5 py-3">
-        <p class="mb-0">
-          Early diagnosis improves the quality of life of people with dementia and their families
+  <div class="mainwrapper">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+      <a class="navbar-brand" href="#">Clock Drawing Test</a>
+    </nav>
+    <div id="section-1" class="container pt-2">
+      <div class="jumbotron">
+        <h3>Welcome to Online Clock Drawing Test</h3>
+        <p class="pt-3 lead">
+          The clock drawing test is a </br>
+          <span id="start-keyword">
+          </span> tool </br> to screen for signs of neurological problems.
         </p>
-        <footer class="blockquote-footer">10 Facts about Dementia by <cite title="Source Title">WHO</cite></footer>
-      </blockquote>
+        <p>
+          It can provide helpful insight into a person's cognitive ability
+        </p>
+        <hr class="my-4">
+        <blockquote class="text-center py-md-5 py-3">
+          <p class="mb-0">
+            Early diagnosis improves the quality of life of people with dementia and their families
+          </p>
+          <footer class="blockquote-footer">10 Facts about Dementia by <cite title="Source Title">WHO</cite></footer>
+        </blockquote>
+        <div class="text-center">
+          <div>
+            <button type="button" class="btn btn-primary" id="start-now-btn">Start Now</button>
+          </div>
+          <small>*We suggest you use a tablet</small>
+        </div>
+      </div>
+    </div>
+    <div id="section-2" class="container pt-2 pb-4">
+      <h6>Step 1</h6>
+      <p>Fill the information</p>
+      <form id="info-form" novalidate>
+        <div class="form-group">
+          <label for="input-screener-name">Screener Name</label>
+          <input name="screenerName" type="text" class="form-control" id="input-screener-name"
+            aria-describedby="input-screener-name" placeholder="Enter Scnreener name" min="12" max="120" required>
+          <div class="invalid-feedback">
+            Screener name is required
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="input-email">Contact email</label>
+          <input name="email" type="email" class="form-control" id="input-email" aria-describedby="input-email"
+            placeholder="Enter your email" required>
+          <div class="invalid-feedback">
+            Email is required
+          </div>
+          <small id="input-email" class="form-text text-muted">We'll send a copy of the result to your email</small>
+        </div>
+        <div class="form-group">
+          <label for="input-screenee-name">Screenee Name</label>
+          <input name="screeneeName" type="text" class="form-control" id="input-screenee-name"
+            aria-describedby="input-screenee-name" placeholder="Enter Scnreenee name" min="12" max="120" required>
+          <div class="invalid-feedback">
+            Screenee name is required
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="input-age">Screenee Age</label>
+          <input name="screeneeAge" type="number" class="form-control" id="input-age" aria-describedby="input-age"
+            placeholder="Enter screenee age" min="12" max="120" required>
+          <div class="invalid-feedback">
+            We only support age from 12-120
+          </div>
+        </div>
+        <div class="text-center">
+          <button type="button" class="btn btn-primary mt-3" id="info-done-btn">Done</button>
+        </div>
+      </form>
+    </div>
+    <div id="section-3" class="container pt-2 pb-3">
+      <h6>Step 3</h6>
+      <p>Pass the device to screenee, and instruct the him/her to draw a clock which indicate 11:10</p>
+      <div id="artboard-container">
+        <canvas id="artboard">
+      </div>
+      <div class="btn-group btn-group-sm pt-2" role="group">
+        <button type="button" class="btn btn-secondary" id="artboard-undo-btn">Undo</button>
+        <button type="button" class="btn btn-danger" id="artboard-reset-btn">Reset</button>
+      </div>
       <div class="text-center">
-        <div>
-          <button type="button" class="btn btn-primary" id="start-now-btn">Start Now</button>
-        </div>
-        <small>*We suggest you use a tablet</small>
+        <button type="button" class="btn btn-primary mt-3" id="artboard-done-btn">Complete</button>
       </div>
     </div>
-  </div>
-  <div id="section-2" class="container pt-2 pb-4">
-    <h6>Step 1</h6>
-    <p>Fill the information</p>
-    <form id="info-form" novalidate>
-      <div class="form-group">
-        <label for="input-screener-name">Screener Name</label>
-        <input name="screenerName" type="text" class="form-control" id="input-screener-name"
-          aria-describedby="input-screener-name" placeholder="Enter Scnreener name" min="12" max="120" required>
-        <div class="invalid-feedback">
-          Screener name is required
+
+    <div id="section-4" class="container pt-2 pb-4">
+      <h6>Step 4</h6>
+      <p>Assess The Drawing</p>
+      <div class="row justify-content-center align-items-center">
+        <div class="col-md-6 col-12">
+          <img src="" class="img-fluid" alt="Result" id="assess-image">
+        </div>
+        <div class="col-md-6 col-12">
+          <div id="assess-question"></div>
+          <div class="text-right">
+            <button type="button" class="btn btn-sm btn-primary" id="assess-yes-btn">Yes</button>
+            <button type="button" class="btn btn-sm btn-primary" id="assess-no-btn">No</button>
+          </div>
         </div>
       </div>
-      <div class="form-group">
-        <label for="input-email">Contact email</label>
-        <input name="email" type="email" class="form-control" id="input-email" aria-describedby="input-email"
-          placeholder="Enter your email" required>
-        <div class="invalid-feedback">
-          Email is required
+    </div>
+
+    <div id="section-5" class="container pt-2 pb-4">
+      <h6>Result</h6>
+      <div class="row justify-content-center align-items-center">
+        <div class="col-md-6 col-12">
+          <img src="" class="img-fluid" id="result-image">
         </div>
-        <small id="input-email" class="form-text text-muted">We'll send a copy of the result to your email</small>
-      </div>
-      <div class="form-group">
-        <label for="input-screenee-name">Screenee Name</label>
-        <input name="screeneeName" type="text" class="form-control" id="input-screenee-name"
-          aria-describedby="input-screenee-name" placeholder="Enter Scnreenee name" min="12" max="120" required>
-        <div class="invalid-feedback">
-          Screenee name is required
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="input-age">Screenee Age</label>
-        <input name="screeneeAge" type="number" class="form-control" id="input-age" aria-describedby="input-age"
-          placeholder="Enter screenee age" min="12" max="120" required>
-        <div class="invalid-feedback">
-          We only support age from 12-120
+        <div class="col-md-6 col-12">
+          <div id="result-container" class="mt-2 alert">
+            <div>Score: <span id="result-score"></span></div>
+            <h5 id="result-text"></h5>
+            <small>
+              A copy of this result is sent to the following email:
+              <span id="result-email"></span>
+            </small>
+          </div>
         </div>
       </div>
       <div class="text-center">
-        <button type="button" class="btn btn-primary mt-3" id="info-done-btn">Done</button>
+        <button type="button" class="btn btn-primary mt-3" id="result-done-btn">Start another test</button>
       </div>
-    </form>
-  </div>
-  <div id="section-3" class="container pt-2 pb-3">
-    <h6>Step 3</h6>
-    <p>Pass the device to screenee, and instruct the him/her to draw a clock which indicate 11:10</p>
-    <div id="artboard-container">
-      <canvas id="artboard">
-    </div>
-    <div class="btn-group btn-group-sm pt-2" role="group">
-      <button type="button" class="btn btn-secondary" id="artboard-undo-btn">Undo</button>
-      <button type="button" class="btn btn-danger" id="artboard-reset-btn">Reset</button>
-    </div>
-    <div class="text-center">
-      <button type="button" class="btn btn-primary mt-3" id="artboard-done-btn">Complete</button>
-    </div>
-  </div>
-
-  <div id="section-4" class="container pt-2 pb-4">
-    <h6>Step 4</h6>
-    <p>Assess The Drawing</p>
-    <div class="row justify-content-center align-items-center">
-      <div class="col-md-6 col-12">
-        <img src="" class="img-fluid" alt="Result" id="assess-image">
-      </div>
-      <div class="col-md-6 col-12">
-        <div id="assess-question"></div>
-        <div class="text-right">
-          <button type="button" class="btn btn-sm btn-primary" id="assess-yes-btn">Yes</button>
-          <button type="button" class="btn btn-sm btn-primary" id="assess-no-btn">No</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div id="section-5" class="container pt-2 pb-4">
-    <h6>Result</h6>
-    <div class="row justify-content-center align-items-center">
-      <div class="col-md-6 col-12">
-        <img src="" class="img-fluid" id="result-image">
-      </div>
-      <div class="col-md-6 col-12">
-        <div id="result-container" class="mt-2 alert">
-          <div>Score: <span id="result-score"></span></div>
-          <h5 id="result-text"></h5>
-          <small>
-            A copy of this result is sent to the following email:
-            <span id="result-email"></span>
-          </small>
-        </div>
-      </div>
-    </div>
-    <div class="text-center">
-      <button type="button" class="btn btn-primary mt-3" id="result-done-btn">Start another test</button>
     </div>
   </div>
 
