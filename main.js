@@ -116,14 +116,19 @@ $(document).ready(function () {
     nextSection();
     $("#result-score").html(data.currentPoint);
     var resultText = "";
+    var resultContainerClass = "";
     if (data.currentPoint <= 7) {
       resultText =
         "The screenee has dementia condition, we suggest you consult the expert on this issue";
+      resultContainerClass = "alert-danger";
     } else if (data.currentPoint > 7 && data.currentPoint <= 9) {
       resultText = "The screenee might experience some dementia condition";
+      resultContainerClass = "alert-warning";
     } else {
       resultText = "The screenee has no dementia condition ";
+      resultContainerClass = "alert-success";
     }
+    $("#result-container").addClass(resultContainerClass);
     $("#result-email").html(data.email);
     $("#result-text").html(resultText);
     $("#result-image")[0].src = data.drawing;
@@ -166,7 +171,7 @@ $(document).ready(function () {
   });
 
   // Initialize
-  emailjs.init("user_ephfpBXT56FDLLPvtfTYK");
+  emailjs.init("user_2NV6R36511lTyLA6gRV4B");
   loadQuestion(0);
   $("#section-2").hide();
   $("#section-3").hide();
